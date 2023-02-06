@@ -1,3 +1,3 @@
 # Pong
 
-Pong programmed through python using pygame
+Pong programmed through python using pygame.
