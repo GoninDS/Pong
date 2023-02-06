@@ -17,19 +17,17 @@ class Player:
     self.speed_rate = 0.0
 
   def blit_image(self, screen):
-    print("Blit with " + str(self.y))
     screen.blit(self.image, (self.x, self.y))
 
   def change_speed_rate(self, direction):
     # Assume down
-    self.speed_rate = 20
+    self.speed_rate = 0.2
     # Change to up if needed
     if (direction == 'up'):
-      self.speed_rate = -20
+      self.speed_rate = -0.2
 
   def stop_speed_rate(self):
     self.speed_rate = 0.0
 
   def move(self):
-    print("Moving with" + str(self.speed_rate))
     self.y += self.speed_rate
