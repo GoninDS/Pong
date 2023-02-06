@@ -15,6 +15,9 @@ first_player = Player(1, 'alien.png')
 # Game loop
 continue_running = True
 while continue_running:
+  # Fill the screen with black
+  screen.fill((0, 0, 0))
+
   # For loop to go through all events in pygame
   for event in pygame.event.get():
     # Event to quit
@@ -23,27 +26,17 @@ while continue_running:
     # Check for a keypress
     if event.type == pygame.KEYDOWN:
       if event.key == pygame.K_DOWN:
-
-        print("Pressing down")
-
         first_player.change_speed_rate('down')
       if event.key == pygame.K_UP:
-
-        print("Pressing up")
-
         first_player.change_speed_rate('up')
-    
     # Key release
     if event.type == pygame.KEYUP:
       # Either arrow
       if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
-
-        print("Released")
-
         first_player.stop_speed_rate()
 
     # Move the player
-    first_player.move()
+    first_player.y += first_player.speed_rate
 
     # Window must be updated
     first_player.blit_image(screen)

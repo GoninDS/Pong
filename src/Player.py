@@ -22,10 +22,10 @@ class Player:
 
   def change_speed_rate(self, direction):
     # Assume down
-    self.speed_rate = 0.3
+    self.speed_rate = 20
     # Change to up if needed
     if (direction == 'up'):
-      self.speed_rate = -0.3
+      self.speed_rate = -20
 
   def stop_speed_rate(self):
     self.speed_rate = 0.0
