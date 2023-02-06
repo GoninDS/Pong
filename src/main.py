@@ -10,7 +10,9 @@ pygame.init()
 screen = pygame.display.set_mode((1200, 600))
 pygame.display.set_caption("Pong")
 
-first_player = Player(1, 'alien.png')
+# Create players
+first_player = Player(0, 'alien.png')
+second_player = Player(1, 'alien.png')
 
 # Game loop
 continue_running = True
@@ -27,21 +29,18 @@ while continue_running:
     if event.type == pygame.KEYDOWN:
       if event.key == pygame.K_DOWN:
         first_player.change_speed_rate('down')
-        # first_player.speed_rate = 20
       if event.key == pygame.K_UP:
         first_player.change_speed_rate('up')
-        # first_player.speed_rate = -20
     # Key release
     if event.type == pygame.KEYUP:
       # Either arrow
       if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
         first_player.stop_speed_rate()
-        # first_player.speed_rate = 0.0
 
   # Move the player
-  # first_player.y += first_player.speed_rate
   first_player.move()
 
   # Window must be updated
   first_player.blit_image(screen)
+  second_player.blit_image(screen)
   pygame.display.update()

@@ -9,7 +9,7 @@ class Player:
       self.x = 100
       self.y = 100
     else:
-      self.x = 100
+      self.x = 1000
       self.y = 100
     # Load image
     self.image = pygame.image.load(image_name)
