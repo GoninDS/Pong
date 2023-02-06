@@ -11,15 +11,14 @@ screen = pygame.display.set_mode((1200, 600))
 pygame.display.set_caption("Pong")
 
 # Create players
-first_player = Player(0, 'alien.png')
-second_player = Player(1, 'alien.png')
+first_player = Player(0, 'img/player_tile.png')
+second_player = Player(1, 'img/player_tile.png')
 
 # Game loop
 continue_running = True
 while continue_running:
   # Fill the screen with black
   screen.fill((0, 0, 0))
-
   # For loop to go through all events in pygame
   for event in pygame.event.get():
     # Event to quit
@@ -39,7 +38,6 @@ while continue_running:
 
   # Move the player
   first_player.move()
-
   # Window must be updated
   first_player.blit_image(screen)
   second_player.blit_image(screen)
