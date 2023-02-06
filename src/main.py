@@ -20,6 +20,30 @@ while continue_running:
     # Event to quit
     if event.type == pygame.QUIT:
       continue_running = False
+    # Check for a keypress
+    if event.type == pygame.KEYDOWN:
+      if event.key == pygame.K_DOWN:
+
+        print("Pressing down")
+
+        first_player.change_speed_rate('down')
+      if event.key == pygame.K_UP:
+
+        print("Pressing up")
+
+        first_player.change_speed_rate('up')
+    
+    # Key release
+    if event.type == pygame.KEYUP:
+      # Either arrow
+      if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
+
+        print("Released")
+
+        first_player.stop_speed_rate()
+
+    # Move the player
+    first_player.move()
 
     # Window must be updated
     first_player.blit_image(screen)

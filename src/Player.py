@@ -13,12 +13,23 @@ class Player:
       self.y = 100
     # Load image
     self.image = pygame.image.load(image_name)
+    # Used to control speed
+    self.speed_rate = 0.0
 
   def blit_image(self, screen):
+    print("Blit with " + str(self.y))
     screen.blit(self.image, (self.x, self.y))
 
-  def move_upwards(self):
-    pass
+  def change_speed_rate(self, direction):
+    # Assume down
+    self.speed_rate = 0.3
+    # Change to up if needed
+    if (direction == 'up'):
+      self.speed_rate = -0.3
 
-  def move_downwards(self):
-    pass
+  def stop_speed_rate(self):
+    self.speed_rate = 0.0
+
+  def move(self):
+    print("Moving with" + str(self.speed_rate))
+    self.y += self.speed_rate
