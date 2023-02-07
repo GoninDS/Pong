@@ -31,13 +31,21 @@ def loop_events():
     # Check for a keypress
     if event.type == pygame.KEYDOWN:
       if event.key == pygame.K_DOWN:
-        first_player.change_speed_rate('down')
+        second_player.change_speed_rate('down')
       if event.key == pygame.K_UP:
+        second_player.change_speed_rate('up')
+      if event.key == pygame.K_s:
+        first_player.change_speed_rate('down')
+      if event.key == pygame.K_w:
         first_player.change_speed_rate('up')
+
     # Key release
     if event.type == pygame.KEYUP:
       # Either arrow
       if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
+        second_player.stop_speed_rate()
+      # S or W
+      if event.key == pygame.K_s or event.key == pygame.K_w:
         first_player.stop_speed_rate()
   # Event to quit not found
   return True
@@ -56,8 +64,9 @@ while continue_running:
   screen.blit(background, (0,0))
   # Loop through pygame events
   continue_running = loop_events()
-  # Move the player
+  # Move the players
   first_player.move()
+  second_player.move()
   # Window must be updated
   update_game_image()
   
