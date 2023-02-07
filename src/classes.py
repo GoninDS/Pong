@@ -53,7 +53,7 @@ class Ball:
     screen.blit(self.image, (self.x, self.y))
 
   # TODO(Luis): Change x and y values
-  def reset_ball(self, winner):
+  def reset(self, winner):
     # Random y value
     self.y = random.randint(100, 500)
     # Static x value for each player
@@ -66,4 +66,11 @@ class Ball:
     pass
 
   def move(self):
+    self.x += self.x_speed_rate
+    self.y += self.y_speed_rate
+
+  def check_border_collision(self):
+    pass
+
+  def check_player_collision(self, player):
     pass

@@ -50,6 +50,12 @@ def loop_events():
   # Event to quit not found
   return True
 
+# Checks collission between players, border and the ball
+def check_collision():
+  ball.check_border_collision()
+  ball.check_player_collision(first_player)
+  ball.check_player_collision(second_player)
+
 # Update game image
 def update_game_image():
   first_player.blit_image(screen)
@@ -60,6 +66,7 @@ def update_game_image():
 
 # Game loop
 continue_running = True
+
 while continue_running:
   # Add background
   screen.blit(background, (0,0))
@@ -70,6 +77,8 @@ while continue_running:
   second_player.move()
   # Move the ball
   ball.move()
+  # Check collision between players, border and the ball
+  check_collision()
   # Window must be updated
   update_game_image()
   
