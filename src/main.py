@@ -7,8 +7,9 @@ from Player import Player
 pygame.init()
 
 # Setup the screen
-screen = pygame.display.set_mode((1200, 600))
+screen = pygame.display.set_mode((1100, 600))
 pygame.display.set_caption("Pong")
+background = pygame.image.load('img/background.png')
 
 # Create players
 first_player = Player(0, 'img/player_tile.png')
@@ -19,6 +20,8 @@ continue_running = True
 while continue_running:
   # Fill the screen with black
   screen.fill((0, 0, 0))
+  screen.blit(background, (0,0))
+
   # For loop to go through all events in pygame
   for event in pygame.event.get():
     # Event to quit
