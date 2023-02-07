@@ -17,18 +17,13 @@ background = pygame.image.load('img/background.png')
 first_player = Player(0, 'img/player_tile.png')
 second_player = Player(1, 'img/player_tile.png')
 
-# Game loop
-continue_running = True
-while continue_running:
-  # Fill the screen with black
-  screen.fill((0, 0, 0))
-  screen.blit(background, (0,0))
-
+# Loop to go through pygame events
+def loop_events():
   # For loop to go through all events in pygame
   for event in pygame.event.get():
     # Event to quit
     if event.type == pygame.QUIT:
-      continue_running = False
+      return False
     # Check for a keypress
     if event.type == pygame.KEYDOWN:
       if event.key == pygame.K_DOWN:
@@ -40,10 +35,24 @@ while continue_running:
       # Either arrow
       if event.key == pygame.K_DOWN or event.key == pygame.K_UP:
         first_player.stop_speed_rate()
+  # Event to quit not found
+  return True
 
-  # Move the player
-  first_player.move()
-  # Window must be updated
+# Update game image
+def update_game_image():
   first_player.blit_image(screen)
   second_player.blit_image(screen)
   pygame.display.update()
+
+# Game loop
+continue_running = True
+while continue_running:
+  # Add background
+  screen.blit(background, (0,0))
+  # Loop through pygame events
+  continue_running = loop_events()
+  # Move the player
+  first_player.move()
+  # Window must be updated
+  update_game_image()
+  
