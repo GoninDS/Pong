@@ -7,6 +7,8 @@ from Player import Player
 pygame.init()
 
 # Setup the screen
+icon = pygame.image.load('img/icon.png')
+pygame.display.set_icon(icon)
 screen = pygame.display.set_mode((1100, 600))
 pygame.display.set_caption("Pong")
 background = pygame.image.load('img/background.png')
