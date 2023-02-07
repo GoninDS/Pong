@@ -31,3 +31,10 @@ class Player:
 
   def move(self):
     self.y += self.speed_rate
+    # Border collission
+    # 600px - 128px = 472
+    if self.y > 472:
+      self.y = 472
+    if self.y < 0:
+      self.y = 0
+    
