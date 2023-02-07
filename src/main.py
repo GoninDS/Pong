@@ -20,6 +20,7 @@ second_player = Player(1, 'img/player_tile.png')
 
 # Create ball
 ball = Ball()
+# ball2 = Ball(0)
 
 # Loop to go through pygame events
 def loop_events():
@@ -38,7 +39,6 @@ def loop_events():
         first_player.change_speed_rate('down')
       if event.key == pygame.K_w:
         first_player.change_speed_rate('up')
-
     # Key release
     if event.type == pygame.KEYUP:
       # Either arrow
@@ -55,6 +55,7 @@ def update_game_image():
   first_player.blit_image(screen)
   second_player.blit_image(screen)
   ball.blit_image(screen)
+  # ball2.blit_image(screen)
   pygame.display.update()
 
 # Game loop
@@ -67,6 +68,8 @@ while continue_running:
   # Move the players
   first_player.move()
   second_player.move()
+  # Move the ball
+  ball.move()
   # Window must be updated
   update_game_image()
   

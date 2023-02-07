@@ -1,16 +1,15 @@
 import pygame
+import random
 
 # Player object
 class Player:
   def __init__(self, player_number, image_name):
     self.player_number = player_number
     # Set the desired x and y coordinates
-    if player_number == 0:
-      self.x = 100
-      self.y = 100
-    else:
+    self.x = 100
+    self.y = 225
+    if player_number == 1:
       self.x = 1000
-      self.y = 100
     # Load image
     self.image = pygame.image.load(image_name)
     # Used to control speed
@@ -47,17 +46,24 @@ class Ball:
     # Load image
     self.image = pygame.image.load('img/ball.png')
     # Used to control speed
-    self.speed_rate = 0.0
+    self.x_speed_rate = 0.0
+    self.y_speed_rate = 0.0
 
   def blit_image(self, screen):
     screen.blit(self.image, (self.x, self.y))
 
+  # TODO(Luis): Change x and y values
+  def reset_ball(self, winner):
+    # Random y value
+    self.y = random.randint(100, 500)
+    # Static x value for each player
+    self.x = 300
+    if winner == "second player":
+      self.x = 800
+
   # TODO(Luis): Figure out ball movement
   def change_speed_rate(self):
     pass
-
-  def stop_speed_rate(self):
-    self.speed_rate = 0.0
 
   def move(self):
     pass
