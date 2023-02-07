@@ -37,4 +37,27 @@ class Player:
       self.y = 472
     if self.y < 0:
       self.y = 0
-    
+
+# Ball object
+class Ball:
+  def __init__(self):
+    # TODO(Luis): Change x and y values
+    self.x = 300
+    self.y = 300
+    # Load image
+    self.image = pygame.image.load('img/ball.png')
+    # Used to control speed
+    self.speed_rate = 0.0
+
+  def blit_image(self, screen):
+    screen.blit(self.image, (self.x, self.y))
+
+  # TODO(Luis): Figure out ball movement
+  def change_speed_rate(self):
+    pass
+
+  def stop_speed_rate(self):
+    self.speed_rate = 0.0
+
+  def move(self):
+    pass

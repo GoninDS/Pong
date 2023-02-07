@@ -1,7 +1,8 @@
 # Import pygame
 import pygame
 # Import the player object
-from Player import Player
+from classes import Player
+from classes import Ball
 
 # Initialize pygame
 pygame.init()
@@ -16,6 +17,9 @@ background = pygame.image.load('img/background.png')
 # Create players
 first_player = Player(0, 'img/player_tile.png')
 second_player = Player(1, 'img/player_tile.png')
+
+# Create ball
+ball = Ball()
 
 # Loop to go through pygame events
 def loop_events():
@@ -42,6 +46,7 @@ def loop_events():
 def update_game_image():
   first_player.blit_image(screen)
   second_player.blit_image(screen)
+  ball.blit_image(screen)
   pygame.display.update()
 
 # Game loop
