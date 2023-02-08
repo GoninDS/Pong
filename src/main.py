@@ -88,7 +88,6 @@ def update_game_image():
 
 # Game loop
 continue_running = True
-
 while continue_running:
   # Add background
   screen.blit(background, (0,0))
