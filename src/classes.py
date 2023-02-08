@@ -40,8 +40,8 @@ class Player:
 # Ball object
 class Ball:
   def __init__(self):
-    # TODO(Luis): Change x and y values
-    self.x = 300
+    # 475 and 625 for each player's x values
+    self.x = 475
     self.y = 300
     # Load image
     self.image = pygame.image.load('img/ball.png')
@@ -52,14 +52,13 @@ class Ball:
   def blit_image(self, screen):
     screen.blit(self.image, (self.x, self.y))
 
-  # TODO(Luis): Change x and y values
   def reset(self, winner):
     # Random y value
     self.y = random.randint(100, 500)
     # Static x value for each player
-    self.x = 300
+    self.x = 475
     if winner == "second player":
-      self.x = 800
+      self.x = 625
 
   # TODO(Luis): Figure out ball movement
   def change_speed_rate(self):
@@ -73,4 +72,4 @@ class Ball:
     pass
 
   def check_player_collision(self, player):
-    pass
+    return True

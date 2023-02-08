@@ -20,7 +20,6 @@ second_player = Player(1, 'img/player_tile.png')
 
 # Create ball
 ball = Ball()
-# ball2 = Ball(0)
 
 # Loop to go through pygame events
 def loop_events():
@@ -53,15 +52,16 @@ def loop_events():
 # Checks collission between players, border and the ball
 def check_collision():
   ball.check_border_collision()
-  ball.check_player_collision(first_player)
-  ball.check_player_collision(second_player)
+  if ball.check_player_collision(first_player) == True:
+    pass
+  elif ball.check_player_collision(second_player) == True:
+    pass
 
 # Update game image
 def update_game_image():
   first_player.blit_image(screen)
   second_player.blit_image(screen)
   ball.blit_image(screen)
-  # ball2.blit_image(screen)
   pygame.display.update()
 
 # Game loop
@@ -81,4 +81,3 @@ while continue_running:
   check_collision()
   # Window must be updated
   update_game_image()
-  
