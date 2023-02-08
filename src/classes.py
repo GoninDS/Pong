@@ -1,6 +1,5 @@
 import pygame
 import random
-import math
 
 # Player object
 class Player:

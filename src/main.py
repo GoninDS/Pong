@@ -1,3 +1,8 @@
+# TODO(Luis): Scoring system
+# TODO(Luis): Add menu screen
+# TODO(Luis): Change speed when the ball is bounced
+# TODO(Luis): Sound effects ?
+
 # Import pygame
 import pygame
 # Import the player object
