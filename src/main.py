@@ -57,10 +57,8 @@ def check_collision():
   scored = ball.check_point()
   # None scored
   if scored == "none":
-    if ball.check_player_collision(first_player) == True:
-      pass
-    elif ball.check_player_collision(second_player) == True:
-      pass
+    ball.check_player_collision(first_player)
+    ball.check_player_collision(second_player)
   # First scored
   elif scored == "first":
     add_point(1)

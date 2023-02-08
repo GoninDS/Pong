@@ -1,5 +1,6 @@
 import pygame
 import random
+import math
 
 # Player object
 class Player:
@@ -12,6 +13,8 @@ class Player:
       self.x = 1000
     # Load image
     self.image = pygame.image.load(image_name)
+    # Create a rect for collission
+    self.player_rect = pygame.Surface.get_rect(self.image)
     # Used to control speed
     self.speed_rate = 0.0
     # Points scored
@@ -47,6 +50,8 @@ class Ball:
     self.y = 300
     # Load image
     self.image = pygame.image.load('img/ball.png')
+    # Create a rect for collission
+    self.ball_rect = pygame.Surface.get_rect(self.image)
     # Used to control speed
     self.x_speed_rate = -0.1
     self.y_speed_rate = -0.2
@@ -69,10 +74,6 @@ class Ball:
       self.x = 475
       self.x_speed_rate = -0.1
 
-  # TODO(Luis): Figure out ball movement
-  def change_speed_rate(self):
-    pass
-
   def move(self):
     self.x += self.x_speed_rate
     self.y += self.y_speed_rate
@@ -94,4 +95,10 @@ class Ball:
     return "none"
 
   def check_player_collision(self, player):
-    return True
+    # Update x and y values for each rect
+    self.ball_rect.x = self.x
+    self.ball_rect.y = self.y
+    player.player_rect.x = player.x
+    player.player_rect.y = player.y
+    if pygame.Rect.colliderect(self.ball_rect, player.player_rect):
+      self.x_speed_rate = -1 * self.x_speed_rate
