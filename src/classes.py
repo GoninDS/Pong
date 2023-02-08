@@ -63,9 +63,11 @@ class Ball:
       # The ball is going to the left side
       self.side = "left"
       self.x = 625
+      self.x_speed_rate = 0.1
     elif self.side == "left":
       self.side = "right"
       self.x = 475
+      self.x_speed_rate = -0.1
 
   # TODO(Luis): Figure out ball movement
   def change_speed_rate(self):
