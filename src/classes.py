@@ -14,6 +14,8 @@ class Player:
     self.image = pygame.image.load(image_name)
     # Used to control speed
     self.speed_rate = 0.0
+    # Points scored
+    self.points_scored = 0
 
   def blit_image(self, screen):
     screen.blit(self.image, (self.x, self.y))
@@ -46,19 +48,24 @@ class Ball:
     # Load image
     self.image = pygame.image.load('img/ball.png')
     # Used to control speed
-    self.x_speed_rate = 0.0
-    self.y_speed_rate = 0.0
+    self.x_speed_rate = -0.1
+    self.y_speed_rate = -0.2
+    # Controls which side the ball last was
+    self.side = "right"
 
   def blit_image(self, screen):
     screen.blit(self.image, (self.x, self.y))
 
-  def reset(self, winner):
+  def reset(self):
     # Random y value
     self.y = random.randint(100, 500)
-    # Static x value for each player
-    self.x = 475
-    if winner == "second player":
+    if self.side == "right":
+      # The ball is going to the left side
+      self.side = "left"
       self.x = 625
+    elif self.side == "left":
+      self.side = "right"
+      self.x = 475
 
   # TODO(Luis): Figure out ball movement
   def change_speed_rate(self):
@@ -69,7 +76,20 @@ class Ball:
     self.y += self.y_speed_rate
 
   def check_border_collision(self):
-    pass
+    if self.y <= 0:
+      self.y_speed_rate = -1 * self.y_speed_rate
+    elif self.y >= 600:
+      self.y_speed_rate = -1 * self.y_speed_rate
+
+  def check_point(self):
+    if self.x <= 0:
+      # Second player scored
+      return "second"
+    elif self.x >= 1100:
+      # First player scored
+      return "first"
+    # None scored
+    return "none"
 
   def check_player_collision(self, player):
     return True

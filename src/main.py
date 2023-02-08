@@ -51,11 +51,30 @@ def loop_events():
 
 # Checks collission between players, border and the ball
 def check_collision():
+  # Check if the ball hit the top or bottom
   ball.check_border_collision()
-  if ball.check_player_collision(first_player) == True:
-    pass
-  elif ball.check_player_collision(second_player) == True:
-    pass
+  # Check if the ball hit the left or right wall
+  scored = ball.check_point()
+  # None scored
+  if scored == "none":
+    if ball.check_player_collision(first_player) == True:
+      pass
+    elif ball.check_player_collision(second_player) == True:
+      pass
+  # First scored
+  elif scored == "first":
+    add_point(1)
+  # Second scored
+  elif scored == "second":
+    add_point(2)
+
+# Adds a point to the desired player
+def add_point(player):
+  if player == 1:
+    first_player.points_scored += 1
+  else:
+    second_player.points_scored += 1
+  ball.reset()
 
 # Update game image
 def update_game_image():
