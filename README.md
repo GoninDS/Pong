@@ -8,7 +8,7 @@ Pong programmed through python using pygame with a desire to understand how to m
 
 + [Luis Solano](https://github.com/GoninDS) (art / programming)
 
-## **Requirements**
+### **Requirements**
 
 + Python installed (tested with Python 3.9.5) 
 
